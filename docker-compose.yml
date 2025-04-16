@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  offshore-proxy:
+    build: ./offshore-proxy
+    ports:
+      - "9010:9010"
+    container_name: offshore-proxy
+
+  ship-proxy:
+    build: ./shipproxy
+    depends_on:
+      - offshore-proxy
+    ports:
+      - "8080:8080"
+    container_name: ship-proxy
